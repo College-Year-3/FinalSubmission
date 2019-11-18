@@ -1,14 +1,14 @@
 <div class='card'>
   <div class='card-body'>
 
-    <div class="input-group mb-3" ng-repeat="product in products  | filter:query">
+    <div class="input-group mb-3" ng-repeat="fighter in fighters  | filter:query">
 
       <input type="text" [(ngModel)]='listFilter' class="form-control" placeholder="Filter by:" aria-label="Filter by:"
         aria-describedby="basic-addon1">
     </div>
     <h5 class="card-text">Filtered by: {{listFilter}}</h5>
     <div class='table-responsive'>
-      <table class='table' *ngIf='products && products.length'>
+      <table class='table' *ngIf='fighters && fighters.length'>
         <thead>
           <tr>
             <th>
@@ -17,10 +17,12 @@
               </button>
             </th>
             <th>Fighter</th>
-            <th>Code</th>
-            <th>Available</th>
-            <th>Price</th>
-            <th>5 Star Rating</th>
+            <th>D.O.B.</th>
+            <th>Nationality</th>
+            <th>Fighting Style</th>
+            <th>User Rating</th>
+            <th>Ranking</th>
+            <th>Comments</th>
           </tr>
         </thead>
         <tbody>
@@ -30,13 +32,16 @@
                 [style.margin.px]='imageMargin'>
             </td>
             <td>{{fighter.fighterName | uppercase}}</td>
-            <td>{{fighter.fighterCode | convertToSpaces:'-'}}</td>
-            <td>{{fighter.releaseDate}}</td>
-            <td>{{fighter.price | currency: 'EUR'  }}</td>
+            <td>{{fighter.fighterDOB | convertToSpaces:'-'}}</td>
+            <td>{{fighter.nationality}}</td>
+            <td>{{fighter.fightingStyle}}</td>
+            <td>{{fighter.userRating}}</td>
+            <td>{{fighter.ranking}}</td>
+            <td>{{fighter.comments}}</td>
             <td>
               <app-star-rating [rating]='fighter.starRating' (notify)='onNotify($event)'></app-star-rating>
             </td>
-            <td><button id="remove" class="btn" (click)="deleteFighter(fighter.id)">
+            <td><button id="remove" class="btn" (click)="deleteFighter(fighter.fighterName)">
                 <i class="fa fa-trash"></i> Trash</button> 
             </td>
           </tr>

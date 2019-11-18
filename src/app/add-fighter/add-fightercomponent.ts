@@ -53,9 +53,9 @@ export class AddFighterComponent implements OnInit {
       comment: this.comment,
       commentCollection: this.commentCollection
     };
-    // Lastly then we call our service method which will add our product to the colletion of products
+    // Lastly then we call our service method which will add our fighter to the colletion of fighters
     this._fighterService.addFighter(fighter);
-    // This will redirect to the 'product-list component'
+    // This will redirect to the 'fighter-list component'
     this.router.navigate(['/fighter-list']);
   }
 }

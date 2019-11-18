@@ -1,8 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { AddFighterComponent } from './add-fightercomponent';
 
-describe('AddProductComponent', () => {
+describe('AddFighterComponent', () => {
   let component: AddFighterComponent;
   let fixture: ComponentFixture<AddFighterComponent>;
 

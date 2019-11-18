@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
-      <button mat-button  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/home">Toms Products</button>
-      <button mat-button  routerLinkActive="active" *ngIf="userLoggedIn()" routerLink="/product-list">List of Products</button>
-      <button mat-button  routerLinkActive="active" *ngIf="userLoggedIn()" routerLink="/add-product">Add a Product</button>
+      <button mat-button  routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/home">Fighter Application</button>
+      <button mat-button  routerLinkActive="active" *ngIf="userLoggedIn()" routerLink="/fighter-list">List of Fighters</button>
+      <button mat-button  routerLinkActive="active" *ngIf="userLoggedIn()" routerLink="/add-fighter">Add a Fighter</button>
 
       <span style="flex: 1 1 auto"></span>
       <button mat-button routerLinkActive="active" *ngIf="!isLoggedIn" routerLink="/login">Login</button>

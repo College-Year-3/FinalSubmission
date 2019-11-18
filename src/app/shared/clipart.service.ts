@@ -7,12 +7,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ClipartService {
-  url: string = "https://openclipart.org/search/json/?query=";
+  url = 'https://openclipart.org/search/json/?query=';
   data: IOpenClipArt;
-  constructor( private _http: HttpClient ) { 
+  constructor( private _http: HttpClient ) {
 }
 
-getImageList(imageStr: string) : Observable<IOpenClipArt>{
-  return this._http.get<IOpenClipArt>(this.url+imageStr);
+getImageList(imageStr: string): Observable<IOpenClipArt> {
+  return this._http.get<IOpenClipArt>(this.url + imageStr);
 }
 }
