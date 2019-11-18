@@ -3,27 +3,30 @@
     {
     "fighterName": "Jon Jones",
       "fighterDOB": "July 19th 1987",
-      "nationality": "Dagestani",
-      "fightingStyle": "Wrestling",
+      "nationality": "American",
+      "fightingStyle": "Greco Roman",
       "ranking": 1,
       "userRating": 3,
       "starRating": 3.5,
       "imageUrl": "https://411mania.com/wp-content/uploads/2016/04/Jon-Jones-645x370.jpg",
-      "commentCollection" : ["Best wrestler", "Great ground and pound"],
-      "comments": "Devout Muslim"
+      "commentCollection" : ["Best all-round game", "The GOAT"],
+      "comments": "Prolific",
+      "weightClass": "Light Heavyweight"
       
     },
     {
       "fighterName": "Khabib Nurmagomedov",
       "fighterDOB": "September 20th 1988",
-      "nationality": "American",
-      "fightingStyle": "Greco Roman",
+      "nationality": "Dagestani",
+      "fightingStyle": "Wrestling",
       "ranking": 2,
       "userRating": 2,
       "starRating": 4.9,
       "imageUrl": "https://411mania.com/wp-content/uploads/2018/10/Khabib-Nurmagomedov-645x370.jpg",
-      "commentCollection" : ["Great fighter", "Best ever"],
-      "comments": "My favourite"
+      "commentCollection" : ["Great fighter", "Best ground and poundr"],
+      "comments": "My favourite",
+      "weightClass": "Lightweight"
+
     },
     {
       "fighterName": "Henry Cejudo",
@@ -34,8 +37,10 @@
       "userRating": 2,
       "starRating": 3.5,
       "imageUrl": "https://a.espncdn.com/combiner/i?img=/i/headshots/mma/players/full/3023388.png",
-      "commentCollection" : ["Best Bantamweight", "Olympic medalist"],
-      "comments": "Cringey"
+      "commentCollection" : ["Best Flymweight", "Olympic medalist"],
+      "comments": "Cringey",
+      "weightClass": "Flyweight"
+
     }
   ]
 }

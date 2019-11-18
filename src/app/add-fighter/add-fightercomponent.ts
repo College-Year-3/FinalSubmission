@@ -24,6 +24,7 @@ export class AddFighterComponent implements OnInit {
   showDisplayClipartComponent: boolean ;
   listFilter: string;
   imageStr: string; // added this
+  weightClass: string;
 
   constructor(private _fighterService: FighterService, private router: Router) { }
   // router will redirect after the form is submitted
@@ -51,7 +52,8 @@ export class AddFighterComponent implements OnInit {
       userRating: this.userRating,
       imageUrl: this.imageUrl,
       comment: this.comment,
-      commentCollection: this.commentCollection
+      commentCollection: this.commentCollection,
+      weightClass: this.weightClass
     };
     // Lastly then we call our service method which will add our fighter to the colletion of fighters
     this._fighterService.addFighter(fighter);

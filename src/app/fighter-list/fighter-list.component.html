@@ -20,10 +20,12 @@
             <th>D.O.B.</th>
             <th>Nationality</th>
             <th>Fighting Style</th>
-            <th>User Rating</th>
-            <th>Ranking</th>
+            <!-- <th>User Rating</th> -->
+            <th>P4P Ranking</th>
+            <th>Weight Class</th>
+
+            <!-- <th>Comments</th> -->
             <th>Comments</th>
-            <th>Comment Collection</th>
 
           </tr>
         </thead>
@@ -37,9 +39,11 @@
             <td>{{fighter.fighterDOB | convertToSpaces:'-'}}</td>
             <td>{{fighter.nationality}}</td>
             <td>{{fighter.fightingStyle}}</td>
-            <td>{{fighter.userRating}}</td>
             <td>{{fighter.ranking}}</td>
-            <td>{{fighter.comments}}</td>
+
+            <!-- <td>{{fighter.userRating}}</td> -->
+            <td>{{fighter.weightClass}}</td>
+            <!-- <td>{{fighter.comments}}</td> -->
             <td>{{fighter.commentCollection}}</td>
             <td>
               <app-star-rating [rating]='fighter.starRating' (notify)='onNotify($event)'></app-star-rating>

@@ -8,4 +8,5 @@ export interface IFighter {
     imageUrl: string;
     commentCollection: string[];
     comment: string;
+    weightClass: string;
 }

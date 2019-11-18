@@ -30,7 +30,7 @@ export class FighterService {
     this.fightersCollection = _afs.collection<IFighter>('fighters');
     console.log('Adding all fighters to firestore...');
     // tslint:disable-next-line: comment-format
-    //this.addAllFighters();
+    this.addAllFighters();
   }
 
   getFighters(): Observable<IFighter[]> {
