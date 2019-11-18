@@ -29,7 +29,8 @@ export class FighterService {
     // Connect to database
     this.fightersCollection = _afs.collection<IFighter>('fighters');
     console.log('Adding all fighters to firestore...');
-    this.addAllFighters();
+    // tslint:disable-next-line: comment-format
+    //this.addAllFighters();
   }
 
   getFighters(): Observable<IFighter[]> {
@@ -40,10 +41,20 @@ export class FighterService {
     // valueChanges() returns the current state of the collection as an
     // Observable of data as a synchronized array of JSON objects.
 
-    this.fighters = this.fightersCollection.valueChanges();
-    this.fighters.subscribe(data =>  console.log('Getting Fighters' + data));
-    return this.fighters;
+    // this.fighters = this.fightersCollection.valueChanges();
+    // this.fighters.subscribe(data =>  console.log('Getting Fighters' + data));
+    // return this.fighters;
     // tslint:disable-next-line: no-trailing-whitespace
+    this.fighters = this.fightersCollection.snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as IFighter;
+        console.log("getFighters:data" + JSON.stringify(data));
+        const id = a.payload.doc.id;
+        console.log("getFighters:id = " + id);
+        return {id, ...data};
+      }))
+    );
+    return this.fighters;
 
     // THIS.FIGHTERS = THIS.FIGHTERSCOLLECTION.SNAPSHOTCHANGES().PIPE(
     //   MAP(ACTIONS => ACTIONS.MAP(A => {
@@ -86,25 +97,8 @@ export class FighterService {
         error => (this.errorMessage = <any> error)
     );
       }
-      // tslint:disable-next-line: no-trailing-whitespace
-      
-      // FIGHERS => {
-      //   THIS.ALLFIGHTERS = FIGHTERS;
-      //   CONSOLE.LOG('GETFIGHTERS' + JSON.STRINGIFY(FIGHTERS));
-      //   FOR (LET FIGHTER OF THIS.ALLFIGHTERS); {
-      //     CONSOLE.LOG('ADDING: ' + FIGHTER.FIGHTERNAME);
-      //     THIS.FIGHTERSCOLLECTION.ADD(FIGHTER);
-      //   }
-      // },
-      // ERROR => (THIS.ERRORMESSAGE = <ANY>ERROR);
-    // tslint:disable-next-line: no-trailing-whitespace
-    
-  // tslint:disable-next-line: no-trailing-whitespace
-  
   private handleError(err: HttpErrorResponse) {
     console.log(err.message);
     return Observable.throw(err.message);
-
   }
-
-}
+}

@@ -33,7 +33,7 @@
               <img *ngIf='showImage' [src]='fighter.imageUrl' [title]='fighter.fighterName' [style.width.px]='imageWidth'
                 [style.margin.px]='imageMargin'>
             </td>
-            <td>{{fighter.fighterName | uppercase}}</td>
+            <td>{{fighter.fighterName}}</td>
             <td>{{fighter.fighterDOB | convertToSpaces:'-'}}</td>
             <td>{{fighter.nationality}}</td>
             <td>{{fighter.fightingStyle}}</td>
@@ -44,7 +44,7 @@
             <td>
               <app-star-rating [rating]='fighter.starRating' (notify)='onNotify($event)'></app-star-rating>
             </td>
-            <td><button id="remove" class="btn" (click)="deleteFighter(fighter.fighterName)">
+            <td><button id="remove" class="btn" (click)="deleteFighter(fighter.id)">
                 <i class="fa fa-trash"></i> Trash</button> 
             </td>
           </tr>
