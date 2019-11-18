@@ -23,6 +23,8 @@
             <th>User Rating</th>
             <th>Ranking</th>
             <th>Comments</th>
+            <th>Comment Collection</th>
+
           </tr>
         </thead>
         <tbody>
@@ -38,6 +40,7 @@
             <td>{{fighter.userRating}}</td>
             <td>{{fighter.ranking}}</td>
             <td>{{fighter.comments}}</td>
+            <td>{{fighter.commentCollection}}</td>
             <td>
               <app-star-rating [rating]='fighter.starRating' (notify)='onNotify($event)'></app-star-rating>
             </td>

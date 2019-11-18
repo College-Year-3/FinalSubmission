@@ -29,36 +29,35 @@ export class FighterService {
     // Connect to database
     this.fightersCollection = _afs.collection<IFighter>('fighters');
     console.log('Adding all fighters to firestore...');
-    // this.addAllFighters();
+    this.addAllFighters();
   }
 
-  getFighters(): Observable<IFighter[]> {// Type of data it's OBSERVING
+  getFighters(): Observable<IFighter[]> {
+    // return this._http.get<IFighter[]>(this._fighterUrl)
+    // .do(data => console.log('All: ' + JSON.stringify(data)))
+    // .catch(this.handleError);
+    // Type of data it's OBSERVING
     // valueChanges() returns the current state of the collection as an
     // Observable of data as a synchronized array of JSON objects.
-    // this.fighters = this.fightersCollection.valueChanges();
-    // // this.fighters = this.fightersCollection.snapshotChanges().pipe(
-    // //   map(actions => actions.map(a => {
-    // //     const data = a.payload.doc.data() as IFighter;
-    // //     console.log('getFighters:data' + JSON.stringify(data));
-    // //     const id = a.payload.doc.id;
-    // //     console.log('getFighters:id = ' + id);
 
-    // //     return { id, ...data };
-    // //   }))
-    // // );
+    this.fighters = this.fightersCollection.valueChanges();
+    this.fighters.subscribe(data =>  console.log('Getting Fighters' + data));
+    return this.fighters;
+    // tslint:disable-next-line: no-trailing-whitespace
 
-    // // // As the data is now available as an Observable we can subscribe to it and
-    // // // Output to the console to have a peek at it
-    // // this.fighters.subscribe(data => console.log('getFightes' + data));
+    // THIS.FIGHTERS = THIS.FIGHTERSCOLLECTION.SNAPSHOTCHANGES().PIPE(
+    //   MAP(ACTIONS => ACTIONS.MAP(A => {
+    //     CONST DATA = A.PAYLOAD.DOC.DATA() AS IFIGHTER;
+    //     CONSOLE.LOG('GETFIGHTERS:DATA' + JSON.STRINGIFY(DATA));
+    //     CONST ID = A.PAYLOAD.DOC.ID;
+    //     CONSOLE.LOG('GETFIGHTERS:ID = ' + ID);
 
-    // // return this.fighters;
+    //     RETURN { ID, ...DATA };
+    //   }))
+    // );
     // return this._http.get<IFighter[]>(this._fightersUrl).pipe (  // IFighter[] specifies the TYPE of response we should get back
     //   tap(data => console.log('All:' + JSON.stringify(data))),
     //   catchError(this.handleError));
-
-    return this._http.get<IFighter[]>(this._fighterUrl)
-    .do(data=> console.log('All: '+JSON.stringify(data)))
-    .catch(this.handleError);
   }
 
   deleteFighter(id: string): void {
@@ -73,23 +72,39 @@ export class FighterService {
     this.fightersCollection.add(fighter);
   }
 
-  // addAllFighters() {
-  //   this._http.get<IFighter[]>(this._fighterUrl).subscribe(
-  //     fighers => {
-  //       this.allFighters = fighters;
-  //       console.log("getFighters" + JSON.stringify(fighters));
-  //       for (let fighter of this.allFighters) {
-  //         console.log("Adding: " + fighter.fighterName);
-  //         this.fightersCollection.add(fighter);
-  //       }
-  //     },
-  //     error => (this.errorMessage = <any>error)
-  //   );
-  // }
+  addAllFighters() {
+    this._http.get<IFighter[]>(this._fighterUrl).subscribe(
+        fighters => {
+          this.allFighters = fighters;
+          console.log('Getting Fighters' + JSON.stringify(fighters));
+          // tslint:disable-next-line: prefer-const
+          for (let fighter of this.allFighters) {
+            console.log('Adding: ' + fighter.fighterName);
+            this.fightersCollection.add(fighter);
+          }
+        },
+        error => (this.errorMessage = <any> error)
+    );
+      }
+      // tslint:disable-next-line: no-trailing-whitespace
+      
+      // FIGHERS => {
+      //   THIS.ALLFIGHTERS = FIGHTERS;
+      //   CONSOLE.LOG('GETFIGHTERS' + JSON.STRINGIFY(FIGHTERS));
+      //   FOR (LET FIGHTER OF THIS.ALLFIGHTERS); {
+      //     CONSOLE.LOG('ADDING: ' + FIGHTER.FIGHTERNAME);
+      //     THIS.FIGHTERSCOLLECTION.ADD(FIGHTER);
+      //   }
+      // },
+      // ERROR => (THIS.ERRORMESSAGE = <ANY>ERROR);
+    // tslint:disable-next-line: no-trailing-whitespace
+    
+  // tslint:disable-next-line: no-trailing-whitespace
+  
   private handleError(err: HttpErrorResponse) {
     console.log(err.message);
     return Observable.throw(err.message);
 
   }
 
-}
+}

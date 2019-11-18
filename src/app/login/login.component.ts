@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
         password: ['', Validators.required]
       });
     }
+    // tslint:disable-next-line: no-trailing-whitespace
     
   ngOnInit() {
   }
@@ -28,20 +29,21 @@ export class LoginComponent implements OnInit {
       console.log('login: pwd = ' + this.form.value.password);
     this.auth.doLogin(this.form.value)
     .then(res => {
-      this.myRoute.navigate(['product-list']);
+      this.myRoute.navigate(['fighter-list']);
     }, err => {
       console.log(err);
       this.errorMessage = err.message;
-    })
+    });
   }
   // Calling Facebook login method in auth service
-  tryFacebookLogin(){
+  tryFacebookLogin() {
     this.auth.doFacebookLogin()
     .then(res => {
       this.myRoute.navigate(['product-list']);
     }, err => {
       console.log(err);
       this.errorMessage = err.message;
+    // tslint:disable-next-line: semicolon
     })
   }
 }

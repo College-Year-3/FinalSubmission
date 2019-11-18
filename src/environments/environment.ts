@@ -5,12 +5,14 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'AIzaSyDdfS2NAHw4xrwt4ncytckD9DFivgY0h78',
-    authDomain: 'tomsproductsdatabase-c9adc.firebaseapp.com',
-    databaseURL: 'https://tomsproductsdatabase-c9adc.firebaseio.com',
-    projectId: 'tomsproductsdatabase-c9adc',
-    storageBucket: 'tomsproductsdatabase-c9adc.appspot.com',
-    messagingSenderId: '629158406743'
+    apiKey: 'AIzaSyC35IIq7yxHqiYM8c9k3Q8F6vKKx362GLo',
+  authDomain: 'fighterapp-ab993.firebaseapp.com',
+  databaseURL: 'https://fighterapp-ab993.firebaseio.com',
+  projectId: 'fighterapp-ab993',
+  storageBucket: 'fighterapp-ab993.appspot.com',
+  messagingSenderId: '346903218518',
+  appId: '1:346903218518:web:0ea551985a466970cc6ef7',
+  measurementId: 'G-GKZ47ZDV3N'
   },
 
 };
