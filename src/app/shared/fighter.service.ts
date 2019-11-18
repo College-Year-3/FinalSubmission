@@ -4,6 +4,10 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http'; // HttpCli
 import { Observable, of } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
+import { jsonpCallbackContext } from '@angular/common/http/src/module';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class FighterService {
@@ -32,25 +36,29 @@ export class FighterService {
     // valueChanges() returns the current state of the collection as an
     // Observable of data as a synchronized array of JSON objects.
     // this.fighters = this.fightersCollection.valueChanges();
-    this.fighters = this.fightersCollection.snapshotChanges().pipe(
-      map(actions => actions.map(a => {
-        const data = a.payload.doc.data() as IFighter;
-        console.log('getFighters:data' + JSON.stringify(data));
-        const id = a.payload.doc.id;
-        console.log('getFighters:id = ' + id);
+    // // this.fighters = this.fightersCollection.snapshotChanges().pipe(
+    // //   map(actions => actions.map(a => {
+    // //     const data = a.payload.doc.data() as IFighter;
+    // //     console.log('getFighters:data' + JSON.stringify(data));
+    // //     const id = a.payload.doc.id;
+    // //     console.log('getFighters:id = ' + id);
 
-        return { id, ...data };
-      }))
-    );
+    // //     return { id, ...data };
+    // //   }))
+    // // );
 
-    // As the data is now available as an Observable we can subscribe to it and
-    // Output to the console to have a peek at it
-    this.fighters.subscribe(data => console.log('getFightes' + data));
+    // // // As the data is now available as an Observable we can subscribe to it and
+    // // // Output to the console to have a peek at it
+    // // this.fighters.subscribe(data => console.log('getFightes' + data));
 
-    return this.fighters;
+    // // return this.fighters;
     // return this._http.get<IFighter[]>(this._fightersUrl).pipe (  // IFighter[] specifies the TYPE of response we should get back
     //   tap(data => console.log('All:' + JSON.stringify(data))),
     //   catchError(this.handleError));
+
+    return this._http.get<IFighter[]>(this._fighterUrl)
+    .do(data=> console.log('All: '+JSON.stringify(data)))
+    .catch(this.handleError);
   }
 
   deleteFighter(id: string): void {

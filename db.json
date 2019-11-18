@@ -1,65 +1,41 @@
 {
-  "products": [
+  "fighters": [
     {
-    "productId": 1,
-      "productName": "Leaf Rake",
-      "productCode": "GDN-0011",
-      "releaseDate": "March 19, 2016",
-      "description": "Leaf rake with 48-inch wooden handle.",
-      "price": 19.95,
-      "starRating": 1.2,
-      "imageUrl": "http://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
+    "fighterName": "Jon Jones",
+      "fighterDOB": "July 19th 1987",
+      "nationality": "Dagestani",
+      "fightingStyle": "Wrestling",
+      "ranking": 1,
+      "userRating": 3,
+      "starRating": 3.5,
+      "imageUrl": "https://411mania.com/wp-content/uploads/2016/04/Jon-Jones-645x370.jpg",
+      "commentCollection" : ["Best wrestler", "Great ground and pound"],
+      "comments": "Devout Muslim"
+      
     },
     {
-      "productId": 2,
-      "productName": "Garden Cart",
-      "productCode": "GDN-0023",
-      "releaseDate": "March 18, 2016",
-      "description": "15 gallon capacity rolling garden cart",
-      "price": 32.99,
-      "starRating": 4.7,
-      "imageUrl": "http://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png"
+      "fighterName": "Khabib Nurmagomedov",
+      "fighterDOB": "September 20th 1988",
+      "nationality": "American",
+      "fightingStyle": "Greco Roman",
+      "ranking": 2,
+      "userRating": 2,
+      "starRating": 4.9,
+      "imageUrl": "https://411mania.com/wp-content/uploads/2018/10/Khabib-Nurmagomedov-645x370.jpg",
+      "commentCollection" : ["Great fighter", "Best ever"],
+      "comments": "My favourite"
     },
     {
-      "productId": 5,
-      "productName": "Hammer",
-      "productCode": "TBX-0048",
-      "releaseDate": "May 21, 2016",
-      "description": "Curved claw steel hammer",
-      "price": 8.9,
-      "starRating": 2.5, 
-      "imageUrl": "http://openclipart.org/image/300px/svg_to_png/73/rejon_Hammer.png"
-    },
-    {
-      "productId": 8,
-      "productName": "Saw",
-      "productCode": "TBX-0022",
-      "releaseDate": "May 15, 2016",
-      "description": "15-inch steel blade hand saw",
-      "price": 11.55,
-      "starRating": 4.8,
-      "imageUrl": "http://openclipart.org/image/300px/svg_to_png/27070/egore911_saw.png"
-    },
-    {
-      "productId": 10,
-      "productName": "Video Game Controller",
-      "productCode": "GMG-0042",
-      "releaseDate": "October 15, 2015",
-      "description": "Standard two-button video game controller",
-      "price": 35.95,
-      "starRating": 3.8,
-      "imageUrl": "http://openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png"
+      "fighterName": "Henry Cejudo",
+      "fighterDOB": "February 9th, 1987",
+      "nationality": "American",
+      "fightingStyle": "Freestyle wrestling",
+      "ranking": 3,
+      "userRating": 2,
+      "starRating": 3.5,
+      "imageUrl": "https://a.espncdn.com/combiner/i?img=/i/headshots/mma/players/full/3023388.png",
+      "commentCollection" : ["Best Bantamweight", "Olympic medalist"],
+      "comments": "Cringey"
     }
   ]
-  ,
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
 }
