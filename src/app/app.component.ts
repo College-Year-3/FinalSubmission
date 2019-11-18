@@ -1,5 +1,5 @@
 import { Component, Provider } from '@angular/core';
-import { ProductService } from './shared/product.service';
+import { FighterService } from './shared/fighter.service';
 // import * as firebase from 'firebase/app';
 
 // // Initialize Firebase
@@ -14,7 +14,7 @@ import { ProductService } from './shared/product.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [ProductService]
+  providers: [FighterService]
 })
 export class AppComponent {
   title = 'app works';

@@ -16,7 +16,7 @@
                 {{showImage ? 'Hide':'Show'}} Image
               </button>
             </th>
-            <th>Product</th>
+            <th>Fighter</th>
             <th>Code</th>
             <th>Available</th>
             <th>Price</th>
@@ -24,19 +24,19 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let product of filteredProducts">
+          <tr *ngFor="let fighter of filteredFighters">
             <td>
-              <img *ngIf='showImage' [src]='product.imageUrl' [title]='product.productName' [style.width.px]='imageWidth'
+              <img *ngIf='showImage' [src]='fighter.imageUrl' [title]='fighter.fighterName' [style.width.px]='imageWidth'
                 [style.margin.px]='imageMargin'>
             </td>
-            <td>{{product.productName | uppercase}}</td>
-            <td>{{product.productCode | convertToSpaces:'-'}}</td>
-            <td>{{product.releaseDate}}</td>
-            <td>{{product.price | currency: 'EUR'  }}</td>
+            <td>{{fighter.fighterName | uppercase}}</td>
+            <td>{{fighter.fighterCode | convertToSpaces:'-'}}</td>
+            <td>{{fighter.releaseDate}}</td>
+            <td>{{fighter.price | currency: 'EUR'  }}</td>
             <td>
-              <app-star-rating [rating]='product.starRating' (notify)='onNotify($event)'></app-star-rating>
+              <app-star-rating [rating]='fighter.starRating' (notify)='onNotify($event)'></app-star-rating>
             </td>
-            <td><button id="remove" class="btn" (click)="deleteProduct(product.id)">
+            <td><button id="remove" class="btn" (click)="deleteFighter(fighter.id)">
                 <i class="fa fa-trash"></i> Trash</button> 
             </td>
           </tr>

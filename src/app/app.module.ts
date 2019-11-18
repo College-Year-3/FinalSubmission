@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { ProductListComponent } from './product-list/product-list.component';
+import { FighterListComponent } from './fighter-list/fighter-list.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -16,7 +16,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { AddProductComponent } from './add-product/add-product.component';
+import { AddFighterComponent } from './add-fighter/add-fightercomponent';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { NavComponent } from './nav/nav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -48,10 +48,10 @@ library.add(faStar);
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full', canActivate: [AuthGuard] }, // home page
-  { path: 'product-list', component: ProductListComponent, canActivate: [AuthGuard] },
-  { path: 'add-product', component: AddProductComponent, canActivate: [AuthGuard] },
+  { path: 'fighter-list', component: FighterListComponent, canActivate: [AuthGuard] },
+  { path: 'add-fighter', component: AddFighterComponent, canActivate: [AuthGuard] },
   { path: 'pageNotFound', component: PageNotFoundComponent, canActivate: [AuthGuard] },
-  { path: 'home', component: ProductListComponent, canActivate: [AuthGuard] },
+  { path: 'home', component: FighterListComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: '**', redirectTo: 'login', canActivate: [AuthGuard] }
@@ -60,8 +60,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    ProductListComponent,
-    AddProductComponent,
+    FighterListComponent,
+    AddFighterComponent,
     PageNotFoundComponent,
     ConvertToSpaces,
     StarRatingComponent,
