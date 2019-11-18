@@ -36,6 +36,11 @@
         <label for="comment">Enter Comment</label>
         <input type="text" class="form-control" id="comment" name="comment" placeholder="Enter Comment" [(ngModel)]="comment">
       </div>
+      <!--Add Multiple Comments -->
+      <div class="form-group">
+        <label for="commentCollection">Enter multiple comments</label>
+        <input type="text" class="form-control" id="commentCollection" name="commentCollection" placeholder="Enter multiple comments here" [(ngModel)]="commentCollection">
+      </div>
    <!-- Search ClipArt API for images -->
       <div class="form-group" fxLayout="row" fxLayoutGap="20px">
           <input fxFlex="60" type="text" class="form-control" id="imageStr" name="imageStr" placeholder="Enter Image String"
