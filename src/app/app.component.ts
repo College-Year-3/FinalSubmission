@@ -24,4 +24,6 @@ import * as firebase from 'firebase/app';
 })
 export class AppComponent {
   title = 'app works';
+
+  
 }

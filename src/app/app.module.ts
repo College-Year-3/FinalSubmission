@@ -43,7 +43,23 @@ import { AuthService } from './service/auth.service';
 import { NotificationService } from './service/notification.service';
 import { DisplayClipartComponent } from './display-clipart/display-clipart.component';
 import { FighterComponent } from './fighter/fighter.component';
-
+import { SocialLoginModule, AuthServiceConfig } from 'angular-6-social-login-v2';
+import { GoogleLoginProvider, FacebookLoginProvider } from 'angular-6-social-login-v2';
+export function socialConfigs() {
+  const config = new AuthServiceConfig(
+    [
+      {
+        id: FacebookLoginProvider.PROVIDER_ID,
+        provider: new FacebookLoginProvider('app -id')
+      },
+      {
+        id: GoogleLoginProvider.PROVIDER_ID,
+        provider: new GoogleLoginProvider('app-id')
+      }
+    ]
+  );
+  return config;
+}
 library.add(faStar);
 
 const routes: Routes = [
