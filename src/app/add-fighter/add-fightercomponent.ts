@@ -14,8 +14,8 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 export class AddFighterComponent implements OnInit {
 
   // Creating variables to store data inputted from user
-  fighterName: string;
-  fighterDOB: string;
+  fightername: string;
+  fighterdob: string;
   nationality: string;
   fightingStyle: string;
   ranking: number;
@@ -30,17 +30,15 @@ export class AddFighterComponent implements OnInit {
 
 
   form1 = new FormGroup({
-    fighterName: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    // tslint:disable-next-line: max-line-length
+    fighterName: new FormControl('', [Validators.required, Validators.minLength(6)]),
     fighterDOB: new FormControl('', [Validators.required, Validators.
       pattern('^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$')])
   });
-  formBuilder: any;
-
+  formbuilder: any;
   // firstName: new FormControl('',[Validators.required, Validators.minLength(5), Validators.pattern('[a-z,A-Z]*')]),
   // lastName: new FormControl('',[Validators.required, Validators.pattern('[z...,Z...]*')])
 
-  constructor(private _fighterService: FighterService, private router: Router) {
+  constructor(private _fighterService: FighterService, private router: Router, private fb: FormBuilder) {
   }
   // router will redirect after the form is submitted
 
@@ -54,17 +52,18 @@ export class AddFighterComponent implements OnInit {
     return false;
   }
   ngOnInit() {
-      // this.form1 = this.formBuilder.group({
-      //   fighterName: ['', Validators.required],
-      //   fighterDOB: ['', Validators.required]
-      // });
+      this.form1 = this.formbuilder.group({
+        fightername: ['', Validators.required],
+        fighterdob: ['', Validators.required]
+      });
   }
-
+  get fighterName() { return this.form1.get('fighterName'); }
+  get fighterDOB() { return this.form1.get('fighterDOB'); }
   // When submit button is clicked, it calls this method
   addFighter(): void {
    const fighter: IFighter = {
-      fighterName: this.fighterName,
-      fighterDOB: this.fighterDOB,
+      fighterName: this.fightername,
+      fighterDOB: this.fighterdob,
       nationality: this.nationality,
       fightingStyle: this.fightingStyle,
       ranking: this.ranking,

@@ -20,10 +20,11 @@
         <input type="string" class="form-control" id="fighterDOB" name="fighterDOB"
           placeholder="Enter fighter date of birth" formControlName="fighterDOB">
 
-        <!-- <div *ngif="fighterDOB.invalid && (fighterDOB.touched || fighterDOB.dirty)" class="alert alert-danger">
-              <div *ngif="fighterDOB.haserror('required')">fighter date of birth is required</div>
-              <div *ngif="fighterDOB.haserror('pattern')">must be in format dd/mm/yyyy</div>
-          </div> -->
+       
+          <div *ngIf="fighterDOB.invalid && (fighterDOB.touched || fighterDOB.dirty)" class="alert alert-danger">
+            <div *ngIf="fighterDOB.hasError('required')">Date of Birth is required</div>
+            <div *ngIf="fighterDOB.hasError('pattern')">Must be in the format dd/mm/yyyy</div>
+        </div>
       </div>
       <!-- Nationality -->
       <div class="form-group">
