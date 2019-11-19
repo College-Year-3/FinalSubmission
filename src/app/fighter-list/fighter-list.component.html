@@ -23,10 +23,8 @@
             <!-- <th>User Rating</th> -->
             <th>P4P Ranking</th>
             <th>Weight Class</th>
-
-            <!-- <th>Comments</th> -->
             <th>Comments</th>
-
+            <th>User Rating</th>
           </tr>
         </thead>
         <tbody>
@@ -49,7 +47,7 @@
               <app-star-rating [rating]='fighter.starRating' (notify)='onNotify($event)'></app-star-rating>
             </td>
             <td><button id="remove" class="btn" (click)="deleteFighter(fighter.id)">
-                <i class="fa fa-trash"></i> Trash</button> 
+                <i class="fa fa-trash"></i> Delete</button> 
             </td>
           </tr>
         </tbody>

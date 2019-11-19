@@ -3,6 +3,8 @@ import { IFighter } from '../fighter-list/fighter';
 import { FighterService } from '../shared/fighter.service';
 import { Router } from '@angular/router';
 import { retry } from 'rxjs/operators';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-add-fighter',
@@ -26,7 +28,20 @@ export class AddFighterComponent implements OnInit {
   imageStr: string; // added this
   weightClass: string;
 
-  constructor(private _fighterService: FighterService, private router: Router) { }
+
+  form1 = new FormGroup({
+    fighterName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    // tslint:disable-next-line: max-line-length
+    fighterDOB: new FormControl('', [Validators.required, Validators.
+      pattern('^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$')])
+  });
+  formBuilder: any;
+
+  // firstName: new FormControl('',[Validators.required, Validators.minLength(5), Validators.pattern('[a-z,A-Z]*')]),
+  // lastName: new FormControl('',[Validators.required, Validators.pattern('[z...,Z...]*')])
+
+  constructor(private _fighterService: FighterService, private router: Router) {
+  }
   // router will redirect after the form is submitted
 
   showHideDisplayClipartComponent(): boolean {
@@ -39,6 +54,10 @@ export class AddFighterComponent implements OnInit {
     return false;
   }
   ngOnInit() {
+      // this.form1 = this.formBuilder.group({
+      //   fighterName: ['', Validators.required],
+      //   fighterDOB: ['', Validators.required]
+      // });
   }
 
   // When submit button is clicked, it calls this method
@@ -59,5 +78,9 @@ export class AddFighterComponent implements OnInit {
     this._fighterService.addFighter(fighter);
     // This will redirect to the 'fighter-list component'
     this.router.navigate(['/fighter-list']);
+  }
+
+  onSubmit() {
+    console.log(this.form1.value);
   }
 }

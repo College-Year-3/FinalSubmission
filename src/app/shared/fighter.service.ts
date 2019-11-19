@@ -30,7 +30,7 @@ export class FighterService {
     this.fightersCollection = _afs.collection<IFighter>('fighters');
     console.log('Adding all fighters to firestore...');
     // tslint:disable-next-line: comment-format
-    this.addAllFighters();
+   // this.addAllFighters();
   }
 
   getFighters(): Observable<IFighter[]> {
@@ -48,41 +48,23 @@ export class FighterService {
     this.fighters = this.fightersCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as IFighter;
-        console.log("getFighters:data" + JSON.stringify(data));
+        console.log('getFighters:data' + JSON.stringify(data));
         const id = a.payload.doc.id;
-        console.log("getFighters:id = " + id);
+        console.log('getFighters:id = ' + id);
         return {id, ...data};
       }))
     );
     return this.fighters;
-
-    // THIS.FIGHTERS = THIS.FIGHTERSCOLLECTION.SNAPSHOTCHANGES().PIPE(
-    //   MAP(ACTIONS => ACTIONS.MAP(A => {
-    //     CONST DATA = A.PAYLOAD.DOC.DATA() AS IFIGHTER;
-    //     CONSOLE.LOG('GETFIGHTERS:DATA' + JSON.STRINGIFY(DATA));
-    //     CONST ID = A.PAYLOAD.DOC.ID;
-    //     CONSOLE.LOG('GETFIGHTERS:ID = ' + ID);
-
-    //     RETURN { ID, ...DATA };
-    //   }))
-    // );
-    // return this._http.get<IFighter[]>(this._fightersUrl).pipe (  // IFighter[] specifies the TYPE of response we should get back
-    //   tap(data => console.log('All:' + JSON.stringify(data))),
-    //   catchError(this.handleError));
   }
-
   deleteFighter(id: string): void {
        this.fightersCollection.doc(id).delete()
       .catch(error => { console.log('deleteFighter error: ' + error); })
       // tslint:disable-next-line: whitespace
       .then(() => console.log('deleteFighter: id = '+ id ));
-
   }
-
   addFighter(fighter: IFighter): void {
     this.fightersCollection.add(fighter);
   }
-
   addAllFighters() {
     this._http.get<IFighter[]>(this._fighterUrl).subscribe(
         fighters => {
