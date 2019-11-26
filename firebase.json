@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/fighterapplication",
+    "public": "dist/fighterApplication",
     "ignore": [
       "firebase.json",
       "**/.*",

@@ -17,6 +17,10 @@ export class FighterListComponent implements OnInit {
   imageMargin = 2;
   showImage = false;
   errorMessage = 'Observable failed!';
+  filteredFighters: IFighter[];
+  fighters: IFighter[];
+  checkboxFilter = { Flyweight: false, Bantamweight: false, Featherweight: false, Lightweight: false, Welterweight: false,
+     Middleweight: false, Lightheavyweight: false, Heavyweight: false };
 
   _listFilter: string;
   get listFilter(): string { // gets values from filter box
@@ -30,8 +34,7 @@ export class FighterListComponent implements OnInit {
     this.filteredFighters = this.listFilter ? this.performFilter(this.listFilter) : this.fighters;
   }
 
-  filteredFighters: IFighter[];
-  fighters: IFighter[];
+  
 
   constructor(private _fighterService: FighterService) {
   }
@@ -65,4 +68,19 @@ export class FighterListComponent implements OnInit {
       console.log('Fighters Are:' + this.fighters);
       this._fighterService.deleteFighter(id);
     }
+
+    filterChange(){
+      this.filteredFighters = this.fighters.filter(x =>
+        (x.weightClass === 'Flyweight' && this.checkboxFilter.Flyweight) ||
+        (x.weightClass === 'Bantamweight' && this.checkboxFilter.Bantamweight) ||
+        (x.weightClass === 'Featherweight' && this.checkboxFilter.Featherweight) ||
+        (x.weightClass === 'Lightweight' && this.checkboxFilter.Lightweight) ||
+        (x.weightClass === 'Welterweight' && this.checkboxFilter.Welterweight) ||
+        (x.weightClass === 'Bantamweight' && this.checkboxFilter.Bantamweight) ||
+        (x.weightClass === 'Middleweight' && this.checkboxFilter.Middleweight) ||
+        (x.weightClass === 'Lightheavyweight' && this.checkboxFilter.Lightheavyweight) ||
+        (x.weightClass === 'Heavyweight' && this.checkboxFilter.Heavyweight) 
+        );
+    }
+
 }
