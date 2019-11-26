@@ -2,19 +2,29 @@
   <div class='card-body'>
     <!-- Filter by Fighter Name -->
     <div class="input-group mb-3" ng-repeat="fighter in fighters  | filter:query">
-      <input type="text" [(ngModel)]='listFilter' class="form-control" placeholder="Filter by Fighter Name:" aria-label="Filter by:"
+      <input type="text"  [(ngModel)]='listFilter' class="form-control" placeholder="Filter by Fighter Name:" aria-label="Filter by:"
         aria-describedby="basic-addon1">
     </div>
     <!-- Checkbox Filter -->
     <div class="input-group mb-3">
-      <input type="checkbox" id="flyW" [(ngModel)]="checkboxFilter.Flyweight" (ngModelChange)="filterChange()" style="margin-left: 20px;">Flyweight
-      <input type="checkbox" [(ngModel)]="checkboxFilter.Bantamweight" (ngModelChange)="filterChange()" style="margin-left: 20px;">Bantamweight
-      <input type="checkbox" [(ngModel)]="checkboxFilter.Featherweight" (ngModelChange)="filterChange()" style="margin-left: 20px;">Featherweight
-      <input type="checkbox" [(ngModel)]="checkboxFilter.Lightweight" (ngModelChange)="filterChange()" style="margin-left: 20px;">Lightweight
-      <input type="checkbox" [(ngModel)]="checkboxFilter.Welterweight" (ngModelChange)="filterChange()" style="margin-left: 20px;"> Welterweight
-      <input type="checkbox" [(ngModel)]="checkboxFilter.Middleweight" (ngModelChange)="filterChange()" style="margin-left: 20px;">Middleweight
-      <input type="checkbox" [(ngModel)]="checkboxFilter.Lightheavyweight" (ngModelChange)="filterChange()" style="margin-left: 20px;">Lightheavyweight
-      <input type="checkbox" [(ngModel)]="checkboxFilter.Heavyweight" (ngModelChange)="filterChange()" style="margin-left: 20px;">Heavyweight
+      <input type="checkbox" id="flyW" [(ngModel)]="checkboxFilter.Flyweight" (ngModelChange)="filterChange()" style="margin-left: 20px;">
+      <label for="flyW">Flyweight</label>
+      <input type="checkbox" id="banW" [(ngModel)]="checkboxFilter.Bantamweight" (ngModelChange)="filterChange()" style="margin-left: 20px;">
+      <label for="banW">Bantamweight</label>
+      <input type="checkbox" id="featW" [(ngModel)]="checkboxFilter.Featherweight" (ngModelChange)="filterChange()" style="margin-left: 20px;">
+      <label for="featW">Featherweight</label>
+      <input type="checkbox" id="lightW" [(ngModel)]="checkboxFilter.Lightweight" (ngModelChange)="filterChange()" style="margin-left: 20px;">
+      <label for="lightW">Lightweight</label>
+      <input type="checkbox" id="weltW" [(ngModel)]="checkboxFilter.Welterweight" (ngModelChange)="filterChange()" style="margin-left: 20px;"> 
+      <label for="weltW">Welterweight</label>
+      <input type="checkbox" id="middW" [(ngModel)]="checkboxFilter.Middleweight" (ngModelChange)="filterChange()" style="margin-left: 20px;">
+      <label for="middW">Middleweight</label>
+      <input type="checkbox" id="lightHW" [(ngModel)]="checkboxFilter.Lightheavyweight" (ngModelChange)="filterChange()" style="margin-left: 20px;">
+      <label for="lightHW">Lightheavyweight</label>
+      <input type="checkbox" id="heavW" [(ngModel)]="checkboxFilter.Heavyweight" (ngModelChange)="filterChange()" style="margin-left: 20px;">
+      <label for="heavW">Heavyweight</label>
+      <input type="checkbox" id="all" [(ngModel)]="checkboxFilter.All" (ngModelChange)="displayAll()" style="margin-left: 20px;">
+      <label for="all">All</label>
     </div>
 
     <h5 class="card-text">{{listFilter}}</h5>

@@ -20,7 +20,7 @@ export class FighterListComponent implements OnInit {
   filteredFighters: IFighter[];
   fighters: IFighter[];
   checkboxFilter = { Flyweight: false, Bantamweight: false, Featherweight: false, Lightweight: false, Welterweight: false,
-     Middleweight: false, Lightheavyweight: false, Heavyweight: false };
+     Middleweight: false, Lightheavyweight: false, Heavyweight: false, All: false };
 
   _listFilter: string;
   get listFilter(): string { // gets values from filter box
@@ -83,4 +83,7 @@ export class FighterListComponent implements OnInit {
         );
     }
 
+    displayAll(){
+      this.filteredFighters = this.fighters;
+  }
 }
