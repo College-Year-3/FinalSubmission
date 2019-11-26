@@ -35,14 +35,12 @@ export class AddFighterComponent implements OnInit {
   //   fighterDOB: new FormControl('', [Validators.required,]),
   //   nationality: new FormControl('', [Validators.required,]),
   //   fightingStyle: new FormControl('', [Validators.required,]),
-
-
   // });
+
   formbuilder: any;
   constructor(private _fighterService: FighterService, private router: Router, private fb: FormBuilder) {
   }
   // router will redirect after the form is submitted
-
   showHideDisplayClipartComponent(): boolean {
     this.showDisplayClipartComponent = !this.showDisplayClipartComponent;
     return false;   // this will hide the display until it is needed
@@ -85,6 +83,7 @@ export class AddFighterComponent implements OnInit {
     // This will redirect to the 'fighter-list component'
     this.router.navigate(['/fighter-list']);
   }
+
 
   onSubmit() {
     // console.log(this.form1.value);

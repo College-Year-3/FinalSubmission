@@ -22,6 +22,9 @@ export class FighterListComponent implements OnInit {
   checkboxFilter = { Flyweight: false, Bantamweight: false, Featherweight: false, Lightweight: false, Welterweight: false,
      Middleweight: false, Lightheavyweight: false, Heavyweight: false, All: false };
 
+     editState: boolean = false;
+     fighterToEdit: IFighter;
+
   _listFilter: string;
   get listFilter(): string { // gets values from filter box
     return this._listFilter;
@@ -85,5 +88,11 @@ export class FighterListComponent implements OnInit {
 
     displayAll(){
       this.filteredFighters = this.fighters;
+  }
+
+  editFighter(event, fighter): void{
+    // console.log('Updating Fighter ' + JSON.stringify( this.fighters));
+    this.editState = true;
+    this.fighterToEdit = fighter;
   }
 }

@@ -59,7 +59,6 @@
             <td>{{fighter.nationality}}</td>
             <td>{{fighter.fightingStyle}}</td>
             <td>{{fighter.ranking}}</td>
-
             <!-- <td>{{fighter.userRating}}</td> -->
             <td>{{fighter.weightClass}}</td>
             <!-- <td>{{fighter.comments}}</td> -->
@@ -70,6 +69,12 @@
             <td><button id="remove" class="btn" (click)="deleteFighter(fighter.id)">
                 <i class="fa fa-trash"></i> Delete</button> 
             </td>
+
+             <td><button id="update" class="btn" (click)="editFighter($event, fighter)">
+                <i class="fa fa-pencil"></i> Update</button> 
+            </td>
+
+            <div *ngIf="editState && fighterToEdit.id == fighter.id"> test </div>
           </tr>
         </tbody>
       </table>

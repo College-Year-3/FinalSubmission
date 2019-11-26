@@ -8,6 +8,7 @@ import { jsonpCallbackContext } from '@angular/common/http/src/module';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
+import * as firebase from 'firebase';
 
 @Injectable()
 export class FighterService {
@@ -62,9 +63,17 @@ export class FighterService {
       // tslint:disable-next-line: whitespace
       .then(() => console.log('deleteFighter: id = '+ id ));
   }
+
   addFighter(fighter: IFighter): void {
     this.fightersCollection.add(fighter);
   }
+
+
+  updateFighter(id: string): void{
+  
+  };
+
+
   addAllFighters() {
     this._http.get<IFighter[]>(this._fighterUrl).subscribe(
         fighters => {
