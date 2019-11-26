@@ -1,85 +1,83 @@
 <div class='card'>
   <div class='card-body'>
-    <form [formGroup]="form1" (ngSubmit)="onSubmit()">
-
-      <!-- Fighter Name -->
+    <form>
+      <!-- Fighter Name  -->
       <div class="form-group">
-        <label for="fighterName"> Fighter Name </label>
-        <input id="fighterName" type="text" formControlName="fighterName" class="form-control"
-          placeholder="enter fighter name" />
-
-          <div *ngIf="fighterName.invalid && (fighterName.touched || fighterName.dirty)" class="alert alert-danger">
-              <div *ngIf="fighterName.hasError('required')">Fighter Name is required</div>
-              <div *ngIf="fighterName.hasError('minlength')">Fighter name has a minimum length of six</div>
-          </div>
+        <label for="fighterName">Fighter Name</label>
+        <input type="text" class="form-control" id="fighterName" name="fighterName" placeholder="Enter Fighter Name"
+          [(ngModel)]="fighterName">
       </div>
-
       <!-- Fighter DOB -->
       <div class="form-group">
-        <label for="fighterDOB">Fighter DOB</label>
-        <input type="string" class="form-control" id="fighterDOB" name="fighterDOB"
-          placeholder="Enter fighter date of birth" formControlName="fighterDOB">
-
-       
-          <div *ngIf="fighterDOB.invalid && (fighterDOB.touched || fighterDOB.dirty)" class="alert alert-danger">
-            <div *ngIf="fighterDOB.hasError('required')">Date of Birth is required</div>
-            <div *ngIf="fighterDOB.hasError('pattern')">Must be in the format dd/mm/yyyy</div>
-        </div>
+        <label for="fighterDOB">Fighter Date of Birth</label>
+        <input type="datetime" class="form-control" id="fighterDOB" name="fighterDOB" placeholder="Enter Fighter DOB"
+          [(ngModel)]="fighterDOB">
       </div>
       <!-- Nationality -->
       <div class="form-group">
         <label for="nationality">Nationality</label>
-        <input type="text" class="form-control" id="nationality" name="nationality" placeholder="Enter Nationality">
+        <input type="text" class="form-control" id="nationality" name="nationality" placeholder="Enter Nationality"
+          [(ngModel)]="nationality">
       </div>
       <!-- Fighting Style -->
       <div class="form-group">
         <label for="fightingStyle">Fighting Style</label>
         <input type="text" class="form-control" id="fightingStyle" name="fightingStyle"
-          placeholder="Enter fightingStyle">
+          placeholder="Enter Fighting Style" [(ngModel)]="fightingStyle">
       </div>
       <!-- Weight Class -->
       <div class="form-group">
         <label for="weightClass">Weight Class</label>
-        <input type="text" class="form-control" id="weightClass" name="weightClass" placeholder="Enter Weight Class">
+        <input type="text" class="form-control" id="weightClass" name="weightClass" placeholder="Enter Weight Class"
+          [(ngModel)]="weightClass">
       </div>
       <!-- Ranking -->
       <div class="form-group">
-        <label for="ranking">Ranking</label>
-        <input type="text" class="form-control" id="ranking" name="ranking" placeholder="Enter ranking">
+        <label for="ranking">Enter Pount for Pound Ranking</label>
+        <input type="number" class="form-control" id="ranking" name="ranking" placeholder="Enter Ranking"
+          [(ngModel)]="ranking">
       </div>
       <!-- User Rating -->
       <div class="form-group">
-        <label for="userRating">Enter User Ranking</label>
-        <input type="number" class="form-control" id="userRating" name="userRating" placeholder="Enter User Rating">
+        <label for="userRating">User Rating</label>
+        <input type="number" class="form-control" id="userRating" name="userRating" placeholder="Enter User Rating"
+          [(ngModel)]="userRating">
       </div>
+
       <!-- Comment -->
       <div class="form-group">
         <label for="comment">Enter Comment</label>
-        <input type="text" class="form-control" id="comment" name="comment" placeholder="Enter Comment">
+        <input type="text" class="form-control" id="comment" name="comment" placeholder="Enter Comment"
+          [(ngModel)]="comment">
       </div>
-      <!--Add Multiple Comments -->
+      
+      <!-- Add Multiple Comments -->
       <div class="form-group">
-        <label for="commentCollection">Enter multiple comments</label>
-        <input type="text" class="form-control" id="commentCollection" name="commentCollection"
-          placeholder="Enter multiple comments here">
+        <label for="commentCollection">Enter Multiple Comments</label>
+        <input type="text" class="form-control" id="commentCollection" name="commentCollection" placeholder="Enter Multiple Comments"
+          [(ngModel)]="commentCollection">
       </div>
       <!-- Search ClipArt API for images -->
       <div class="form-group" fxLayout="row" fxLayoutGap="20px">
         <input fxFlex="60" type="text" class="form-control" id="imageStr" name="imageStr"
-          placeholder="Enter Image String">
+          placeholder="Enter Image String" [(ngModel)]='imageStr'>
         <button fxFlex="20" mat-raised-button color="primary" type="submit" (click)="showHideDisplayClipartComponent()">
           Find Images </button>
       </div>
+
       <!-- if there is Clip art, add its URL to the addImageString.... event -->
       <div class="form-group">
         <app-display-clipart (addImageStringEE)="addImageStringToFormTextBox($event)"
           *ngIf='showDisplayClipartComponent' [imageStr]='imageStr'></app-display-clipart>
       </div>
+      <!-- Fighter Image -->
       <div class="form-group">
-        <input type="text" class="form-control" id="imageUrl" name="imageUrl" placeholder="Enter Image URL">
+        <input type="text" class="form-control" id="imageUrl" name="imageUrl" placeholder="Enter Image URL"
+          [(ngModel)]='imageUrl'>
       </div>
-      <button type="submit" (click)="addFighter()" class="btn btn-primary" [disabled]="!form1.valid">Add
-        Fighter</button>
+      
+
+      <button type="submit" (click)="addFighter()" class="btn btn-primary">Add Fighter</button>
     </form>
   </div>
 </div>

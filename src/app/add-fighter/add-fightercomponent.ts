@@ -14,8 +14,8 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 export class AddFighterComponent implements OnInit {
 
   // Creating variables to store data inputted from user
-  fightername: string;
-  fighterdob: string;
+  fighterName: string;
+  fighterDOB: string;
   nationality: string;
   fightingStyle: string;
   ranking: number;
@@ -29,15 +29,16 @@ export class AddFighterComponent implements OnInit {
   weightClass: string;
 
 
-  form1 = new FormGroup({
-    fighterName: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    fighterDOB: new FormControl('', [Validators.required, Validators.
-      pattern('^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$')])
-  });
-  formbuilder: any;
-  // firstName: new FormControl('',[Validators.required, Validators.minLength(5), Validators.pattern('[a-z,A-Z]*')]),
-  // lastName: new FormControl('',[Validators.required, Validators.pattern('[z...,Z...]*')])
+  // form1 = new FormGroup({
+  //   fighterName: new FormControl('', [Validators.required, Validators.minLength(6)]),
+  //   // tslint:disable-next-line: max-line-length
+  //   fighterDOB: new FormControl('', [Validators.required,]),
+  //   nationality: new FormControl('', [Validators.required,]),
+  //   fightingStyle: new FormControl('', [Validators.required,]),
 
+
+  // });
+  formbuilder: any;
   constructor(private _fighterService: FighterService, private router: Router, private fb: FormBuilder) {
   }
   // router will redirect after the form is submitted
@@ -52,18 +53,24 @@ export class AddFighterComponent implements OnInit {
     return false;
   }
   ngOnInit() {
-      this.form1 = this.formbuilder.group({
-        fightername: ['', Validators.required],
-        fighterdob: ['', Validators.required]
-      });
+      // this.form1 = this.formbuilder.group({
+      //   fightername: ['', Validators.required],
+      //   fighterdob: ['', Validators.required],
+      //   NATIONALITY: ['', Validators.required],
+
+      // });
   }
-  get fighterName() { return this.form1.get('fighterName'); }
-  get fighterDOB() { return this.form1.get('fighterDOB'); }
+  // get fighterName() { return this.form1.get('fighterName'); }
+  // get fighterDOB() { return this.form1.get('fighterDOB'); }
+  // get nationality() { return this.form1.get('nationality'); }
+  // get fightingStyle() { return this.form1.get('fightingStyle'); }
+
+
   // When submit button is clicked, it calls this method
   addFighter(): void {
    const fighter: IFighter = {
-      fighterName: this.fightername,
-      fighterDOB: this.fighterdob,
+      fighterName: this.fighterName,
+      fighterDOB: this.fighterDOB,
       nationality: this.nationality,
       fightingStyle: this.fightingStyle,
       ranking: this.ranking,
@@ -80,6 +87,6 @@ export class AddFighterComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form1.value);
+    // console.log(this.form1.value);
   }
 }
