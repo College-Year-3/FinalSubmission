@@ -25,6 +25,7 @@ export class FighterService {
   // Array to hold all fighters
   allFighters: IFighter[];
   errorMessage: string;
+  itemDoc;
 
   constructor(private _http: HttpClient, private _afs: AngularFirestore) {
     // Connect to database
@@ -64,13 +65,15 @@ export class FighterService {
       .then(() => console.log('deleteFighter: id = '+ id ));
   }
 
-  addFighter(fighter: IFighter): void {
+  addFighter(fighter: IFighter) {
     this.fightersCollection.add(fighter);
   }
 
 
-  updateFighter(id: string): void{
-  
+  updateFighter(fighter: IFighter): void{
+   this.itemDoc = this._afs.doc('fighters/${fighter.id');
+   this.itemDoc.update(fighter);
+   console.log("update fighter called");
   };
 
 

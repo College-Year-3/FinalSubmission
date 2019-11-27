@@ -66,15 +66,88 @@
             <td>
               <app-star-rating [rating]='fighter.starRating' (notify)='onNotify($event)'></app-star-rating>
             </td>
-            <td><button id="remove" class="btn" (click)="deleteFighter(fighter.id)">
-                <i class="fa fa-trash"></i> Delete</button> 
+            <td>
+              <button id="remove" class="fa fa-trash" (click)="deleteFighter(fighter.id)" (click)="clearState()">Delete</button>
             </td>
-
-             <td><button id="update" class="btn" (click)="editFighter($event, fighter)">
-                <i class="fa fa-pencil"></i> Update</button> 
+             <td>
+               <button id="update" (click)="editFighter($event, fighter)" class="fa fa-pencil" >Update</button>
+               <button *ngIf="editState && fighterToEdit.id == fighter.id" id="compress" (click)="clearState()" class="fa fa-compress">Collapse</button>
             </td>
 
             <div *ngIf="editState && fighterToEdit.id == fighter.id"> 
+              
+                <div class='card' style="float: left;">
+                    <div class='card-body'>
+                <form (ngSubmit)="editFighter(fighter)" >
+                    <!-- Fighter Name  -->
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="fighterName" name="fighterName" placeholder="Enter Fighter Name"
+                        [(ngModel)]="fighterName">
+                    </div>
+                    <!-- Fighter DOB -->
+                    <div class="form-group">
+                      <input type="datetime" class="form-control" id="fighterDOB" name="fighterDOB" placeholder="Enter Fighter DOB"
+                        [(ngModel)]="fighterDOB">
+                    </div>
+                    <!-- Nationality -->
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="nationality" name="nationality" placeholder="Enter Nationality"
+                        [(ngModel)]="nationality">
+                    </div>
+                    <!-- Fighting Style -->
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="fightingStyle" name="fightingStyle"
+                        placeholder="Enter Fighting Style" [(ngModel)]="fightingStyle">
+                    </div>
+                    <!-- Weight Class -->
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="weightClass" name="weightClass" placeholder="Enter Weight Class"
+                        [(ngModel)]="weightClass">
+                    </div>
+                    <!-- Ranking -->
+                    <div class="form-group">
+                      <input type="number" class="form-control" id="ranking" name="ranking" placeholder="Enter Ranking"
+                        [(ngModel)]="ranking">
+                    </div>
+                    <!-- User Rating -->
+                    <div class="form-group">
+                      <input type="number" class="form-control" id="userRating" name="userRating" placeholder="Enter User Rating"
+                        [(ngModel)]="userRating">
+                    </div>
+              
+                    <!-- Comment -->
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="comment" name="comment" placeholder="Enter Comment"
+                        [(ngModel)]="comment">
+                    </div>
+                    
+                    <!-- Add Multiple Comments -->
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="commentCollection" name="commentCollection" placeholder="Enter Multiple Comments"
+                        [(ngModel)]="commentCollection">
+                    </div>
+                    <!-- Search ClipArt API for images -->
+                    <div class="form-group" fxLayout="row" fxLayoutGap="20px">
+                      <input fxFlex="60" type="text" class="form-control" id="imageStr" name="imageStr"
+                        placeholder="Enter Image String" [(ngModel)]='imageStr'>
+                      <button fxFlex="20" mat-raised-button color="primary" type="submit" (click)="showHideDisplayClipartComponent()">
+                        Find Images </button>
+                    </div>
+              
+                    <!-- if there is Clip art, add its URL to the addImageString.... event -->
+                    <div class="form-group">
+                      <app-display-clipart (addImageStringEE)="addImageStringToFormTextBox($event)"
+                        *ngIf='showDisplayClipartComponent' [imageStr]='imageStr'></app-display-clipart>
+                    </div>
+                    <!-- Fighter Image -->
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="imageUrl" name="imageUrl" placeholder="Enter Image URL"
+                        [(ngModel)]='imageUrl'>
+                    </div>
+                    <button type="submit"class="btn btn-primary">Update Fighter</button>
+                  </form>
+                  </div>
+                  </div>
               </div>
           </tr>
         </tbody>

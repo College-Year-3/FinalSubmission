@@ -70,6 +70,7 @@ export class FighterListComponent implements OnInit {
   deleteFighter(id: string): void {
       console.log('Fighters Are:' + this.fighters);
       this._fighterService.deleteFighter(id);
+      this.clearState();
     }
 
     filterChange(){
@@ -90,12 +91,20 @@ export class FighterListComponent implements OnInit {
       this.filteredFighters = this.fighters;
   }
 
-  editFighter(event, fighter): void{
-    // console.log('Updating Fighter ' + JSON.stringify( this.fighters));
+  editFighter(event, fighter: IFighter) {
     this.editState = true;
-    console.log("EditState is :" + this.editState);
     this.fighterToEdit = fighter;
-    console.log("fighterToEdcit is: " + JSON.stringify( fighter));
-    console.log(fighter.id);
+  }
+
+  updateFighter(fighter: IFighter){
+    this._fighterService.updateFighter(fighter);
+    this.clearState();
+  }
+
+  clearState(){
+    console.log("clear state called");
+    this.editState = false;
+    this.fighterToEdit = null;
+
   }
 }
