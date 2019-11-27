@@ -1,5 +1,5 @@
 // tslint:disable-next-line: import-spacing
-import { Component, OnInit } from  '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IFighter } from './fighter';
 import { FighterService } from '../shared/fighter.service';
 
@@ -19,11 +19,13 @@ export class FighterListComponent implements OnInit {
   errorMessage = 'Observable failed!';
   filteredFighters: IFighter[];
   fighters: IFighter[];
-  checkboxFilter = { Flyweight: false, Bantamweight: false, Featherweight: false, Lightweight: false, Welterweight: false,
-     Middleweight: false, Lightheavyweight: false, Heavyweight: false, All: false };
+  checkboxFilter = {
+    Flyweight: false, Bantamweight: false, Featherweight: false, Lightweight: false, Welterweight: false,
+    Middleweight: false, Lightheavyweight: false, Heavyweight: false, All: false
+  };
 
-     editState: boolean = false;
-     fighterToEdit: IFighter;
+  editState: boolean = false;
+  fighterToEdit: IFighter;
 
   _listFilter: string;
   get listFilter(): string { // gets values from filter box
@@ -33,11 +35,11 @@ export class FighterListComponent implements OnInit {
     // if listFilter value is empty, return full list of fighters.
     // if listFilter has something in it, execute function to pull out fighters from list and sort them into filteredFighters
     this._listFilter = value;
-     // JavaScript conditonal operator, If list filter is empty
+    // JavaScript conditonal operator, If list filter is empty
     this.filteredFighters = this.listFilter ? this.performFilter(this.listFilter) : this.fighters;
   }
 
-  
+
 
   constructor(private _fighterService: FighterService) {
   }
@@ -68,40 +70,42 @@ export class FighterListComponent implements OnInit {
   }
 
   deleteFighter(id: string): void {
-      console.log('Fighters Are:' + this.fighters);
-      this._fighterService.deleteFighter(id);
-      this.clearState();
-    }
+    console.log('Fighters Are:' + this.fighters);
+    this._fighterService.deleteFighter(id);
+    this.clearState();
+  }
 
-    filterChange(){
-      this.filteredFighters = this.fighters.filter(x =>
-        (x.weightClass === 'Flyweight' && this.checkboxFilter.Flyweight) ||
-        (x.weightClass === 'Bantamweight' && this.checkboxFilter.Bantamweight) ||
-        (x.weightClass === 'Featherweight' && this.checkboxFilter.Featherweight) ||
-        (x.weightClass === 'Lightweight' && this.checkboxFilter.Lightweight) ||
-        (x.weightClass === 'Welterweight' && this.checkboxFilter.Welterweight) ||
-        (x.weightClass === 'Bantamweight' && this.checkboxFilter.Bantamweight) ||
-        (x.weightClass === 'Middleweight' && this.checkboxFilter.Middleweight) ||
-        (x.weightClass === 'Lightheavyweight' && this.checkboxFilter.Lightheavyweight) ||
-        (x.weightClass === 'Heavyweight' && this.checkboxFilter.Heavyweight) 
-        );
-    }
+  filterChange() {
+    this.filteredFighters = this.fighters.filter(x =>
+      (x.weightClass === 'Flyweight' && this.checkboxFilter.Flyweight) ||
+      (x.weightClass === 'Bantamweight' && this.checkboxFilter.Bantamweight) ||
+      (x.weightClass === 'Featherweight' && this.checkboxFilter.Featherweight) ||
+      (x.weightClass === 'Lightweight' && this.checkboxFilter.Lightweight) ||
+      (x.weightClass === 'Welterweight' && this.checkboxFilter.Welterweight) ||
+      (x.weightClass === 'Bantamweight' && this.checkboxFilter.Bantamweight) ||
+      (x.weightClass === 'Middleweight' && this.checkboxFilter.Middleweight) ||
+      (x.weightClass === 'Lightheavyweight' && this.checkboxFilter.Lightheavyweight) ||
+      (x.weightClass === 'Heavyweight' && this.checkboxFilter.Heavyweight)
+    );
+  }
 
-    displayAll(){
-      this.filteredFighters = this.fighters;
+  displayAll() {
+    this.filteredFighters = this.fighters;
   }
 
   editFighter(event, fighter: IFighter) {
+    console.log("edit fighter called");
     this.editState = true;
     this.fighterToEdit = fighter;
   }
 
-  updateFighter(fighter: IFighter){
+  updateFighter(fighter: IFighter) {
+    console.log("update fighter called");
     this._fighterService.updateFighter(fighter);
     this.clearState();
   }
 
-  clearState(){
+  clearState() {
     console.log("clear state called");
     this.editState = false;
     this.fighterToEdit = null;

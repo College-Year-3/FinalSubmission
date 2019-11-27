@@ -14,6 +14,7 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 export class AddFighterComponent implements OnInit {
 
   // Creating variables to store data inputted from user
+  id: number;
   fighterName: string;
   fighterDOB: string;
   nationality: string;

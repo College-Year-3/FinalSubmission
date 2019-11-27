@@ -1,4 +1,5 @@
 export interface IFighter {
+    id: number;
     fighterName: string;
     fighterDOB: string;
     nationality: string;

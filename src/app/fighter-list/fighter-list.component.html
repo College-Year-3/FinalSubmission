@@ -67,64 +67,66 @@
               <app-star-rating [rating]='fighter.starRating' (notify)='onNotify($event)'></app-star-rating>
             </td>
             <td>
-              <button id="remove" class="fa fa-trash" (click)="deleteFighter(fighter.id)" (click)="clearState()">Delete</button>
+              <button id="delete" class="fa fa-trash" (click)="deleteFighter(fighter.id)" (click)="clearState()">Delete</button>
             </td>
              <td>
                <button id="update" (click)="editFighter($event, fighter)" class="fa fa-pencil" >Update</button>
-               <button *ngIf="editState && fighterToEdit.id == fighter.id" id="compress" (click)="clearState()" class="fa fa-compress">Collapse</button>
             </td>
-
+<td>
+            <button *ngIf="editState && fighterToEdit.id == fighter.id" id="compress" (click)="clearState()" class="fa fa-compress">Collapse</button>
+</td>
+            <!-- Checking if the fighter has clicked the update button and getting the item to edit-->
             <div *ngIf="editState && fighterToEdit.id == fighter.id"> 
               
                 <div class='card' style="float: left;">
                     <div class='card-body'>
-                <form (ngSubmit)="editFighter(fighter)" >
+                <form (ngSubmit)="updateFighter(fighter)" >
                     <!-- Fighter Name  -->
                     <div class="form-group">
                       <input type="text" class="form-control" id="fighterName" name="fighterName" placeholder="Enter Fighter Name"
-                        [(ngModel)]="fighterName">
+                        [(ngModel)]="fighter.fighterName">
                     </div>
                     <!-- Fighter DOB -->
                     <div class="form-group">
                       <input type="datetime" class="form-control" id="fighterDOB" name="fighterDOB" placeholder="Enter Fighter DOB"
-                        [(ngModel)]="fighterDOB">
+                        [(ngModel)]="fighter.fighterDOB">
                     </div>
                     <!-- Nationality -->
                     <div class="form-group">
                       <input type="text" class="form-control" id="nationality" name="nationality" placeholder="Enter Nationality"
-                        [(ngModel)]="nationality">
+                        [(ngModel)]="fighter.nationality">
                     </div>
                     <!-- Fighting Style -->
                     <div class="form-group">
                       <input type="text" class="form-control" id="fightingStyle" name="fightingStyle"
-                        placeholder="Enter Fighting Style" [(ngModel)]="fightingStyle">
+                        placeholder="Enter Fighting Style" [(ngModel)]="fighter.fightingStyle">
                     </div>
                     <!-- Weight Class -->
                     <div class="form-group">
                       <input type="text" class="form-control" id="weightClass" name="weightClass" placeholder="Enter Weight Class"
-                        [(ngModel)]="weightClass">
+                        [(ngModel)]="fighter.weightClass">
                     </div>
                     <!-- Ranking -->
                     <div class="form-group">
                       <input type="number" class="form-control" id="ranking" name="ranking" placeholder="Enter Ranking"
-                        [(ngModel)]="ranking">
+                        [(ngModel)]="fighter.ranking">
                     </div>
                     <!-- User Rating -->
                     <div class="form-group">
                       <input type="number" class="form-control" id="userRating" name="userRating" placeholder="Enter User Rating"
-                        [(ngModel)]="userRating">
+                        [(ngModel)]="fighter.userRating">
                     </div>
               
                     <!-- Comment -->
                     <div class="form-group">
                       <input type="text" class="form-control" id="comment" name="comment" placeholder="Enter Comment"
-                        [(ngModel)]="comment">
+                        [(ngModel)]="fighter.comment">
                     </div>
                     
                     <!-- Add Multiple Comments -->
                     <div class="form-group">
                       <input type="text" class="form-control" id="commentCollection" name="commentCollection" placeholder="Enter Multiple Comments"
-                        [(ngModel)]="commentCollection">
+                        [(ngModel)]="fighter.commentCollection">
                     </div>
                     <!-- Search ClipArt API for images -->
                     <div class="form-group" fxLayout="row" fxLayoutGap="20px">

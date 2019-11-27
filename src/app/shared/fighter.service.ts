@@ -9,6 +9,7 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import * as firebase from 'firebase';
+import { IfObservable } from 'rxjs/observable/IfObservable';
 
 @Injectable()
 export class FighterService {
@@ -58,11 +59,14 @@ export class FighterService {
     );
     return this.fighters;
   }
-  deleteFighter(id: string): void {
+  deleteFighter(id: string, fighter: IFighter): void {
        this.fightersCollection.doc(id).delete()
       .catch(error => { console.log('deleteFighter error: ' + error); })
       // tslint:disable-next-line: whitespace
       .then(() => console.log('deleteFighter: id = '+ id ));
+
+      this.itemDoc = this._afs.doc(`fighters/${fighter.id}`);
+      this.itemDoc.delete();
   }
 
   addFighter(fighter: IFighter) {
@@ -71,9 +75,8 @@ export class FighterService {
 
 
   updateFighter(fighter: IFighter): void{
-   this.itemDoc = this._afs.doc('fighters/${fighter.id');
-   this.itemDoc.update(fighter);
-   console.log("update fighter called");
+   this.itemDoc = this._afs.doc(`fighters/${fighter.id}`);
+   this.itemDoc.set(fighter);
   };
 
 
