@@ -59,14 +59,11 @@ export class FighterService {
     );
     return this.fighters;
   }
-  deleteFighter(id: string, fighter: IFighter): void {
+  deleteFighter(id: string): void {
        this.fightersCollection.doc(id).delete()
       .catch(error => { console.log('deleteFighter error: ' + error); })
       // tslint:disable-next-line: whitespace
       .then(() => console.log('deleteFighter: id = '+ id ));
-
-      this.itemDoc = this._afs.doc(`fighters/${fighter.id}`);
-      this.itemDoc.delete();
   }
 
   addFighter(fighter: IFighter) {

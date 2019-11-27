@@ -1,10 +1,16 @@
 {
   "hosting": {
-    "public": "dist/fighterApplication",
+    "public": "dist/fighterapplication",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
     ]
   }
 }

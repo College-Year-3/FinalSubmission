@@ -68,6 +68,7 @@ export class AddFighterComponent implements OnInit {
   // When submit button is clicked, it calls this method
   addFighter(): void {
    const fighter: IFighter = {
+      id: this.id,
       fighterName: this.fighterName,
       fighterDOB: this.fighterDOB,
       nationality: this.nationality,
