@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
 
-  title = 'Toms\'s Products';
+  title = 'Fighter Application';
 
   isLoggedIn: boolean;
   constructor(private auth: AuthService, private myRoute: Router) { }

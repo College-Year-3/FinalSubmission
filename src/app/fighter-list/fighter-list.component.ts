@@ -93,6 +93,9 @@ export class FighterListComponent implements OnInit {
   editFighter(event, fighter): void{
     // console.log('Updating Fighter ' + JSON.stringify( this.fighters));
     this.editState = true;
+    console.log("EditState is :" + this.editState);
     this.fighterToEdit = fighter;
+    console.log("fighterToEdcit is: " + JSON.stringify( fighter));
+    console.log(fighter.id);
   }
 }
