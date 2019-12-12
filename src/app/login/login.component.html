@@ -11,18 +11,23 @@
       </mat-form-field>
     </form>
   </mat-card-content>
+ 
   <!-- Regular login -->
   <mat-card-actions>
     <button mat-raised-button (click)="login()" color="primary">Login</button>
   </mat-card-actions>
 <mat-card-actions>
+  
   <!-- Button to log with Facebook -->
-  <button mat-raised-button (click)="tryFacebookLogin()" color="primary">
+  <button mat-raised-button (click)="FacebookLogin()" color="primary">
     <i class="fa fa-facebook" aria-hidden="true"></i>
     Login with Facebook
   </button>
-  <!-- Button to log in wiht Google -->
-  <button id="googleBtn">Google</button>
-
+  
+  <!-- Button to log in with Google -->
+  <button mat-raised-button (click)="GoogleLogin()" color="primary">
+    <i class="fa fa-google" aria-hidden="true"></i>
+    Login with Facebook
+  </button>
 </mat-card-actions>
 </mat-card>

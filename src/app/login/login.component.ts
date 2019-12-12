@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     });
   }
   // Calling Facebook login method in auth service
-  tryFacebookLogin() {
+  FacebookLogin() {
     this.auth.doFacebookLogin()
     .then(res => {
       this.myRoute.navigate(['fighter-list']);
@@ -46,4 +46,16 @@ export class LoginComponent implements OnInit {
     // tslint:disable-next-line: semicolon
     })
   }
+
+  GoogleLogin() {
+    this.auth.doGoogleLogin().then(
+      res => {
+        this.myRoute.navigate(['fighter-list']); 
+      }, err => {
+        console.log(err);
+        this.errorMessage = err.message;
+      }
+    )  
+   
+  } 
 }

@@ -97,6 +97,19 @@ export class AuthService {
     });
   }
   // tslint:disable-next-line: no-trailing-whitespace
+  doGoogleLogin(){
+    return new Promise<any>((resolve, reject) => {
+      let provider = new firebase.auth.GoogleAuthProvider();
+      provider.addScope('profile');
+      provider.addScope('email');
+      this._firebaseAuth.auth
+      .signInWithPopup(provider)
+      .then(res => {
+        resolve(res);
+        this.loggedInStatus = true;
+      })
+    })
+  }
   
   doLogout() {
     // tslint:disable-next-line: no-shadowed-variable
