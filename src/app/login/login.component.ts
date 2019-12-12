@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit {
   }
 
   GoogleLogin() {
+    console.log("Attempting to login from Goolge");
     this.auth.doGoogleLogin().then(
       res => {
         this.myRoute.navigate(['fighter-list']); 
