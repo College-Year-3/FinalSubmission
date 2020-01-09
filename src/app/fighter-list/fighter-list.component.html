@@ -1,0 +1,159 @@
+<div class='card'>
+  <div class='card-body'>
+    <!-- Filter by Fighter Name -->
+    <div class="input-group mb-3" ng-repeat="fighter in fighters  | filter:query">
+      <input type="text"  [(ngModel)]='listFilter' class="form-control" placeholder="Filter by Fighter Name:" aria-label="Filter by:"
+        aria-describedby="basic-addon1">
+    </div>
+    <!-- Checkbox Filter -->
+    <div class="input-group mb-3">
+      <input type="checkbox" id="flyW" [(ngModel)]="checkboxFilter.Flyweight" (ngModelChange)="filterChange()" style="margin-left: 20px;">
+      <label for="flyW">Flyweight</label>
+      <input type="checkbox" id="banW" [(ngModel)]="checkboxFilter.Bantamweight" (ngModelChange)="filterChange()" style="margin-left: 20px;">
+      <label for="banW">Bantamweight</label>
+      <input type="checkbox" id="featW" [(ngModel)]="checkboxFilter.Featherweight" (ngModelChange)="filterChange()" style="margin-left: 20px;">
+      <label for="featW">Featherweight</label>
+      <input type="checkbox" id="lightW" [(ngModel)]="checkboxFilter.Lightweight" (ngModelChange)="filterChange()" style="margin-left: 20px;">
+      <label for="lightW">Lightweight</label>
+      <input type="checkbox" id="weltW" [(ngModel)]="checkboxFilter.Welterweight" (ngModelChange)="filterChange()" style="margin-left: 20px;"> 
+      <label for="weltW">Welterweight</label>
+      <input type="checkbox" id="middW" [(ngModel)]="checkboxFilter.Middleweight" (ngModelChange)="filterChange()" style="margin-left: 20px;">
+      <label for="middW">Middleweight</label>
+      <input type="checkbox" id="lightHW" [(ngModel)]="checkboxFilter.Lightheavyweight" (ngModelChange)="filterChange()" style="margin-left: 20px;">
+      <label for="lightHW">Lightheavyweight</label>
+      <input type="checkbox" id="heavW" [(ngModel)]="checkboxFilter.Heavyweight" (ngModelChange)="filterChange()" style="margin-left: 20px;">
+      <label for="heavW">Heavyweight</label>
+      <input type="checkbox" id="all" [(ngModel)]="checkboxFilter.All" (ngModelChange)="displayAll()" style="margin-left: 20px;">
+      <label for="all">All</label>
+    </div>
+
+    <h5 class="card-text">{{listFilter}}</h5>
+    <div class='table-responsive'>
+      <table class='table' *ngIf='fighters && fighters.length'>
+        <thead>
+          <tr>
+            <th>
+              <button class='btn btn-primary' (click)='toggleImage()'>
+                {{showImage ? 'Hide':'Show'}} Image
+              </button>
+            </th>
+            <th>Fighter</th>
+            <th>D.O.B.</th>
+            <th>Nationality</th>
+            <th>Fighting Style</th>
+            <!-- <th>User Rating</th> -->
+            <th>P4P Ranking</th>
+            <th>Weight Class</th>
+            <th>Comments</th>
+            <th>User Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let fighter of filteredFighters">
+            <td>
+              <img *ngIf='showImage' [src]='fighter.imageUrl' [title]='fighter.fighterName' [style.width.px]='imageWidth'
+                [style.margin.px]='imageMargin'>
+            </td>
+            <td>{{fighter.fighterName}}</td>
+            <td>{{fighter.fighterDOB | convertToSpaces:'-'}}</td>
+            <td>{{fighter.nationality}}</td>
+            <td>{{fighter.fightingStyle}}</td>
+            <td>{{fighter.ranking}}</td>
+            <!-- <td>{{fighter.userRating}}</td> -->
+            <td>{{fighter.weightClass}}</td>
+            <!-- <td>{{fighter.comments}}</td> -->
+            <td>{{fighter.commentCollection}}</td>
+            <td>
+              <app-star-rating [rating]='fighter.starRating' (notify)='onNotify($event)'></app-star-rating>
+            </td>
+            <td>
+              <button id="delete" class="fa fa-trash" (click)="deleteFighter(fighter.id)" (click)="clearState()">Delete</button>
+            </td>
+             <td>
+               <button id="update" (click)="editFighter($event, fighter)" class="fa fa-pencil" >Update</button>
+            </td>
+<td>
+            <button *ngIf="editState && fighterToEdit.id == fighter.id" id="compress" (click)="clearState()" class="fa fa-compress">Collapse</button>
+</td>
+            <!-- Checking if the fighter has clicked the update button and getting the item to edit-->
+            <div *ngIf="editState && fighterToEdit.id == fighter.id"> 
+              
+                <div class='card' style="float: left;">
+                    <div class='card-body'>
+                <form (ngSubmit)="updateFighter(fighter)" >
+                    <!-- Fighter Name  -->
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="fighterName" name="fighterName" placeholder="Enter Fighter Name"
+                        [(ngModel)]="fighter.fighterName">
+                    </div>
+                    <!-- Fighter DOB -->
+                    <div class="form-group">
+                      <input type="datetime" class="form-control" id="fighterDOB" name="fighterDOB" placeholder="Enter Fighter DOB"
+                        [(ngModel)]="fighter.fighterDOB">
+                    </div>
+                    <!-- Nationality -->
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="nationality" name="nationality" placeholder="Enter Nationality"
+                        [(ngModel)]="fighter.nationality">
+                    </div>
+                    <!-- Fighting Style -->
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="fightingStyle" name="fightingStyle"
+                        placeholder="Enter Fighting Style" [(ngModel)]="fighter.fightingStyle">
+                    </div>
+                    <!-- Weight Class -->
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="weightClass" name="weightClass" placeholder="Enter Weight Class"
+                        [(ngModel)]="fighter.weightClass">
+                    </div>
+                    <!-- Ranking -->
+                    <div class="form-group">
+                      <input type="number" class="form-control" id="ranking" name="ranking" placeholder="Enter Ranking"
+                        [(ngModel)]="fighter.ranking">
+                    </div>
+                    <!-- User Rating -->
+                    <div class="form-group">
+                      <input type="number" class="form-control" id="userRating" name="userRating" placeholder="Enter User Rating"
+                        [(ngModel)]="fighter.userRating">
+                    </div>
+              
+                    <!-- Comment -->
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="comment" name="comment" placeholder="Enter Comment"
+                        [(ngModel)]="fighter.comment">
+                    </div>
+                    
+                    <!-- Add Multiple Comments -->
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="commentCollection" name="commentCollection" placeholder="Enter Multiple Comments"
+                        [(ngModel)]="fighter.commentCollection">
+                    </div>
+                    <!-- Search ClipArt API for images -->
+                    <div class="form-group" fxLayout="row" fxLayoutGap="20px">
+                      <input fxFlex="60" type="text" class="form-control" id="imageStr" name="imageStr"
+                        placeholder="Enter Image String" [(ngModel)]='imageStr'>
+                      <button fxFlex="20" mat-raised-button color="primary" type="submit" (click)="showHideDisplayClipartComponent()">
+                        Find Images </button>
+                    </div>
+              
+                    <!-- if there is Clip art, add its URL to the addImageString.... event -->
+                    <div class="form-group">
+                      <app-display-clipart (addImageStringEE)="addImageStringToFormTextBox($event)"
+                        *ngIf='showDisplayClipartComponent' [imageStr]='imageStr'></app-display-clipart>
+                    </div>
+                    <!-- Fighter Image -->
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="imageUrl" name="imageUrl" placeholder="Enter Image URL"
+                        [(ngModel)]='imageUrl'>
+                    </div>
+                    <button type="submit"class="btn btn-primary">Update Fighter</button>
+                  </form>
+                  </div>
+                  </div>
+              </div>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
