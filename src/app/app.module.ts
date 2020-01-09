@@ -23,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { SignupComponent } from './signup/signup.component';
+import {LazyLoadImageModule} from 'ng-lazyload-image';
 import 'firebase/app';
 import 'firebase/auth';
 // import { FlexLayoutModule } from '@angular/flex-layout';
@@ -45,6 +46,9 @@ import { DisplayClipartComponent } from './display-clipart/display-clipart.compo
 import { FighterComponent } from './fighter/fighter.component';
 import { SocialLoginModule, AuthServiceConfig } from 'angular-6-social-login-v2';
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angular-6-social-login-v2';
+import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.component';
+import {LeftGloveComponent} from './welcome-screen/leftGloveComponent';
+import {RightGloveComponent} from './welcome-screen/rightGloveComponent';
 export function socialConfigs() {
   const config = new AuthServiceConfig(
     [
@@ -86,7 +90,10 @@ const routes: Routes = [
     NotificationsComponent,
     SignupComponent,
     DisplayClipartComponent,
-    FighterComponent
+    FighterComponent,
+    WelcomeScreenComponent,
+    LeftGloveComponent,
+    RightGloveComponent
   ],
   imports: [
     AngularFireAuthModule,
@@ -111,6 +118,7 @@ const routes: Routes = [
     // tslint:disable-next-line: deprecation
     HttpModule,
     FontAwesomeModule,
+    LazyLoadImageModule
   ],
   providers: [{ provide: LocationStrategy,  useClass: HashLocationStrategy } , AuthService, AuthGuard, NotificationService],
   bootstrap: [AppComponent]
