@@ -49,6 +49,7 @@ import { GoogleLoginProvider, FacebookLoginProvider } from 'angular-6-social-log
 import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.component';
 import {LeftGloveComponent} from './welcome-screen/leftGloveComponent';
 import {RightGloveComponent} from './welcome-screen/rightGloveComponent';
+import {GlovesComponent} from './welcome-screen/glovesComponent';
 export function socialConfigs() {
   const config = new AuthServiceConfig(
     [
@@ -93,7 +94,8 @@ const routes: Routes = [
     FighterComponent,
     WelcomeScreenComponent,
     LeftGloveComponent,
-    RightGloveComponent
+    RightGloveComponent,
+    GlovesComponent
   ],
   imports: [
     AngularFireAuthModule,

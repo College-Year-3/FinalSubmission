@@ -11164,14 +11164,6 @@ a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
 .gloveContainer{
 
 }
-.gloveBox{
-  max-width: 50%;
-  max-height: 50%;
-  display: inline-block;
-  text-align: center;
-}
-.glove{
-  width: 75%;
-  height: 75%;
-}
+
+
 

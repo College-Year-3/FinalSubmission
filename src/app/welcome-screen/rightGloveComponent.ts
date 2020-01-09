@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {fade, rightGloveEnter} from '../animations';
 
 @Component({
@@ -9,8 +9,21 @@ import {fade, rightGloveEnter} from '../animations';
     rightGloveEnter
   ],
   template: '<h3 class="center display-3" @fade> VIEWER</h3>' +
-    '<img [lazyLoad]="imageRight" class="glove" @fade>'
+    '<img [lazyLoad]="imageRight" class="glove" @rightGloveEnter>',
+  encapsulation: ViewEncapsulation.None,
+  styles: [
+    '.glove{\n' +
+    '  width: 75%;\n' +
+    '  height: 75%;\n' +
+    '}',
+    '.gloveBox{\n' +
+    '  max-width: 50%;\n' +
+    '  max-height: 50%;\n' +
+    '  display: inline-block;\n' +
+    '  text-align: center;\n' +
+    '}'
+  ]
 })
 export class RightGloveComponent {
-  imageRight = 'https://drive.google.com/uc?id=165yb5bm7z1ytF7yzqLV9hSOx7o6HyKj8';
+  imageRight = 'https://drive.google.com/uc?id=1spA2TMwuy3sqUcZJcztK0o32DDwMWVds';
 }
