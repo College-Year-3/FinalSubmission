@@ -11161,8 +11161,29 @@ a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
 .modal .close:not(:disabled):not(.disabled):hover, .modal .close:not(:disabled):not(.disabled):focus {
   color: #000;
 }
-.gloveContainer{
 
+.background-ring {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  background-color:transparent;
+  background-image: url('https://drive.google.com/uc?id=14luGl6jqSKW1GvLoVem7eCXSdLthTRjD');
 }
 
+.home-page-text {
+  color: whitesmoke;
+}
+
+.card-holder {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.clipart {
+  text-align: center;
+}
 
