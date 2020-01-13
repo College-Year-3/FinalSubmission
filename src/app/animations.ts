@@ -1,4 +1,4 @@
-import {animate, state, style, transition, trigger} from '@angular/animations';
+import {animate, query, stagger, state, style, transition, trigger} from '@angular/animations';
 
 export let fade = trigger('fade', [
   transition(':enter', [
@@ -46,5 +46,18 @@ export let downwards_entry = trigger('downwards_entry', [
   transition(':enter', [
     style({transform: 'translateY(100%)', opacity: 0}),
     animate(2000)
+  ])
+]);
+
+const list_animation = trigger('list_animation', [
+  transition('* <=> *', [
+    query(':enter',
+      [style({ opacity: 0 }), stagger('60ms', animate('600ms ease-out', style({ opacity: 1 })))],
+      { optional: true }
+    ),
+    query(':leave',
+      animate('200ms', style({ opacity: 0 })),
+      { optional: true }
+    )
   ])
 ]);
