@@ -2,11 +2,15 @@
 import { Component, OnInit } from '@angular/core';
 import { IFighter } from './fighter';
 import { FighterService } from '../shared/fighter.service';
+import {rightwards_entry} from '../animations';
 
 @Component({
   selector: 'app-fighter-list',
   templateUrl: './fighter-list.component.html',
-  styleUrls: ['./fighter-list.component.css']
+  styleUrls: ['./fighter-list.component.css'],
+  animations: [
+    rightwards_entry
+  ]
 })
 
 export class FighterListComponent implements OnInit {
