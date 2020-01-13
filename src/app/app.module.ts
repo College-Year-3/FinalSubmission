@@ -50,6 +50,7 @@ import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.componen
 import {LeftGloveComponent} from './welcome-screen/leftGloveComponent';
 import {RightGloveComponent} from './welcome-screen/rightGloveComponent';
 import {GlovesComponent} from './welcome-screen/glovesComponent';
+import { HomePageComponent } from './home-page/home-page.component';
 export function socialConfigs() {
   const config = new AuthServiceConfig(
     [
@@ -72,7 +73,7 @@ const routes: Routes = [
   { path: 'fighter-list', component: FighterListComponent, canActivate: [AuthGuard] },
   { path: 'add-fighter', component: AddFighterComponent, canActivate: [AuthGuard] },
   { path: 'pageNotFound', component: PageNotFoundComponent, canActivate: [AuthGuard] },
-  { path: 'home', component: FighterListComponent, canActivate: [AuthGuard] },
+  { path: 'home', component: HomePageComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: '**', redirectTo: 'login', canActivate: [AuthGuard] }
@@ -95,7 +96,8 @@ const routes: Routes = [
     WelcomeScreenComponent,
     LeftGloveComponent,
     RightGloveComponent,
-    GlovesComponent
+    GlovesComponent,
+    HomePageComponent
   ],
   imports: [
     AngularFireAuthModule,
